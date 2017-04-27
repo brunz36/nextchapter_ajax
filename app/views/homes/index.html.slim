@@ -1,8 +1,13 @@
-.page-header
-  h1 Your nextChapter
+.page-header.container-fluid
+  .row
+    h1.col-lg-6 Your nextChapter
+    .col-lg-6
+      = form_tag(homes_path, :method => "get", id: "search-form") do
+        = text_field_tag :search, params[:search], class: "col-md-6", placeholder: "Search"
+        = submit_tag "Search", class: "btn btn-warning btn-sm black_text", :name => nil
   
 - if @homes.blank?
-    h4 There no homes #{params[:search]}
+    h4 There no homes for the search: "#{params[:search]}"
     
 .row
   - @homes.each do | home |
@@ -28,7 +33,3 @@
 .text-center
   = paginate @homes, theme: "bootstrap"
   p = page_entries_info @homes
-
-
-
-  / number_to_currency(1234567890.506, precision: 3)     # => $1,234,567,890.506
