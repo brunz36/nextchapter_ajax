@@ -3,11 +3,11 @@
     h1.col-lg-6 Your nextChapter
     .col-lg-6
       = form_tag(homes_path, :method => "get", id: "search-form") do
-        = text_field_tag :search, params[:search], class: "col-md-6", placeholder: "Search"
-        = submit_tag "Search", class: "btn btn-warning btn-sm black_text", :name => nil
+        = text_field_tag :query, params[:query], class: "col-md-10", placeholder: "Search"
+        = submit_tag "Search", class: "btn btn-warning btn-sm black_text col-md-2", :name => nil
   
 - if @homes.blank?
-    h4 There no homes for the search: "#{params[:search]}"
+    h4 There no homes for the search: "#{params[:query]}"
     
 .row
   - @homes.each do | home |
