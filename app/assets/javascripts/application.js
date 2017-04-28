@@ -14,5 +14,4 @@
 //= require jquery_ujs
 
 //= require 'cable'
-//= require 'bootstrap'
-//= require 'homes'
+//= require bootstrap
