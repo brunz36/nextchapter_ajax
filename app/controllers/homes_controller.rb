@@ -6,8 +6,8 @@ class HomesController < ApplicationController
   def index
     @homes = Home.all.order(created_at: :asc).page params[:page]
 
-    if params[:search]
-      @homes = Home.search(params[:search]).order(created_at: :asc).page params[:page]
+    if params[:query]
+      @homes = Home.search(params[:query]).order(created_at: :asc).page params[:page]
     else
       @homes = Home.all.order(created_at: :asc).page params[:page]
     end

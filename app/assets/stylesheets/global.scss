@@ -25,7 +25,17 @@ body {
   font-family: Tahoma, Geneva, sans-serif;
 }
 
-.index_listing {
+.page-header {
+  h1 {
+    margin: 0;
+  }
+
+  form {
+    margin-top: 0.5em;
+  }
+}
+
+.index-listing {
   h4, p {
     margin: 0;
   }

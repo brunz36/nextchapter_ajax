@@ -1,34 +1,15 @@
-.page-header.container-fluid
+.page-header
   .row
-    h1.col-lg-6 Your nextChapter
-    .col-lg-6
+    h1.col-md-6 Your nextChapter
+    .col-md-6
       = form_tag(homes_path, :method => "get", id: "search-form") do
-        = text_field_tag :search, params[:search], class: "col-md-6", placeholder: "Search"
-        = submit_tag "Search", class: "btn btn-warning btn-sm black_text", :name => nil
-  
-- if @homes.blank?
-    h4 There no homes for the search: "#{params[:search]}"
-    
-.row
-  - @homes.each do | home |
-    .col-sm-6.index_listing
-      .col-sm-6.thumbnail.index-img.listing
-        - if home.image_url(:medium)
-          = link_to image_tag(home.image_url(:medium), size: "300x197"), home
-        - else
-          = link_to image_tag("no_img.jpg", size:"250x150"), home
-        h2.text-center #{number_to_currency(home.price, precision: 0)}
-      .col-sm-6.listing.index_details
-        = link_to home, class: "btn btn-warning glyphicon glyphicon-book black_text" do
-          span.btn_detail  Details
-        p.h4 = home.address
-        p.h4 #{home.city}, #{home.state} #{home.zip}
-        p Bedrooms: #{home.number_bedrooms}
-        p Bathrooms: #{home.number_bathrooms}
-        p Square Feet: #{home.sq_ft}
-        p Year Built: #{home.year_built}
-      .col-sm-12.listing.index_des
-        p= home.description
+        = text_field_tag :query, params[:query], class: "col-xs-12 col-md-12", placeholder: "Search for your nextChapter"
+
+.row.index-homes
+  - if @homes.blank?
+    = render 'empty_homes'
+  - else
+    = render @homes
 
 .text-center
   = paginate @homes, theme: "bootstrap"
