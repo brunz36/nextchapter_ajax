@@ -9,7 +9,7 @@
   h2 =@home.address
   h3 class="#{home_age(@home.created_at)} pull-right" Listed #{time_ago_in_words(@home.created_at)} ago
   h2 #{@home.city}, #{@home.state} #{@home.zip}
-  
+
 .container-fluid.
   .row
     .col-md-6.thumbnail.splash_show
@@ -33,5 +33,26 @@
         h4 No HOA
       h4 #{@home.impressionist_count} people visited this page
   .row
+    .col-md-12.listing
+      - if @home.image_url(:medium)
+        button.btn.btn-warning.black_text.col-md-2[type="button" data-toggle="modal" data-target="#large-img-modal"]
+          | Large Picture
+        button.btn.btn-warning.black_text.col-md-2.col-md-offset-1[type="button" data-toggle="modal" data-target="#small-img-modal"]
+          | Small Picture
+        .modal.fade[id="large-img-modal" role="dialog" aria-labelledby="myModalLabel"]
+          .modal-dialog.modal-lg[role="document"]
+            .modal-content
+              .modal-body.modal-image
+                = image_tag(@home.image_url(:large))
+                button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                  span[aria-hidden="true"]&times;
+                  
+        .modal.fade[id="small-img-modal" role="dialog" aria-labelledby="myModalLabel"]
+          .modal-dialog[role="document"]
+            .modal-content
+              .modal-body.modal-image
+                = image_tag(@home.image_url(:small))
+                button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                  span[aria-hidden="true"]&times;
     .col-md-12.description_show
       h4 #{@home.description}
