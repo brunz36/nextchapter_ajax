@@ -106,6 +106,14 @@ body {
 }
 
 .modal-image {
+  .modal-header {
+    border-bottom: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
   border-left: 10px solid #f1ac38;
   background-color: #aaa;
   border-top: 0;

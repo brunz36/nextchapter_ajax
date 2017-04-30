@@ -35,13 +35,25 @@ body
                 | HELLO #{current_user.name.upcase}
             li = link_to "LIST A NEW HOME", new_home_path
             li
-              = link_to "LOGOUT", logout_path
+              a[type="button" data-toggle="modal" data-target="#logout"  style="cursor:pointer"]
+                | LOGOUT
           - else
             li
               = link_to auth_path(provider: 'github') do
                 span.fa.fa-github.black_text
                 |  Log In with GitHub
-  
+
+
+  .modal.fade[id="logout" role="dialog" aria-labelledby="myModalLabel"]
+    .modal-dialog.modal-sm[role="document"]
+      .modal-content.modal-image
+        .modal-header
+          h3 Are you sure you want to logout?
+        .modal-body
+          button.btn.btn-warning = link_to "LOGOUT", logout_path
+          button.close[type="button" data-dismiss="modal" aria-label="Close"]
+            span[aria-hidden="true"]&times;
+
   .container
     - flash.each do |name, msg|
       = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do
