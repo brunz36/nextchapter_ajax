@@ -32,10 +32,11 @@ $(document).ready(function() {
   })
   // TOO MUCH CODE
 
-  $('.page').on('click', function(event) {
-    let queryValue = $('innerText').val()
+  $('.pagination').on('click', '.page', function(event) {
+    // let queryValue = $(this).data(`BaseURI`)
+    var baseUrl = document.location.target;
 
-    console.log(queryValue)
+    console.log(baseUrl)
     //
     // $.ajax({
     //   url: '/homes',
