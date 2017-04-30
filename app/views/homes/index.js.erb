@@ -3,6 +3,3 @@
 <% else %>
   $('.index-homes').html('<%= j(render @homes) %>')
 <% end %>
-
-$('#homes').html('<%= escape_javascript render(@homes) %>');
-$('#paginator').html('<%= escape_javascript(paginate(@homes, :remote => true).to_s) %>');

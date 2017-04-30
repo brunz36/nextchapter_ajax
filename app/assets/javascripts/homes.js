@@ -6,7 +6,7 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
-  $('#query').on('input', function(event) {
+  $('#query').on('input', _.debounce(function(event) {
     let queryValue = $(this).val()
 
     $.ajax({
@@ -14,7 +14,7 @@ $(document).ready(function() {
       data: { query: queryValue },
       dataType: 'script'
     })
-  })
+  }, 400))
 
   // THERE REALLY SHOULD BE A BETTER WAY WITH TOGGLE!!!
   $('.home-list').on('click', '.sq-feet', function(event){
@@ -32,16 +32,16 @@ $(document).ready(function() {
   })
   // TOO MUCH CODE
 
-  $('.pagination').on('click', '.page', function(event) {
-    // let queryValue = $(this).data(`BaseURI`)
-    var baseUrl = document.location.target;
+  $('.page a').on('click', function(event) {
+    let pageNumber = $(this).text()
+    event.preventDefault()
 
-    console.log(baseUrl)
-    //
-    // $.ajax({
-    //   url: '/homes',
-    //   data: { query: queryValue },
-    //   dataType: 'script'
-    // })
+    console.log(pageNumber)
+
+    $.ajax({
+      url: '/homes',
+      data: { page: pageNumber },
+      dataType: 'script'
+    })
   })
 })

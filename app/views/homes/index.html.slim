@@ -11,6 +11,7 @@
   - else
     = render @homes
 
-.paginator.text-center
-  = paginate @homes, theme: "bootstrap", :remote => true
-  p = page_entries_info @homes
+.text-center
+  = paginate @homes, theme: "bootstrap"
+  / = paginate @homes, theme: "bootstrap", remote: true
+  / p = page_entries_info @homes
