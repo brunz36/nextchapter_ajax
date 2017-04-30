@@ -10,7 +10,7 @@
   h3 class="#{home_age(@home.created_at)} pull-right" Listed #{time_ago_in_words(@home.created_at)} ago
   h2 #{@home.city}, #{@home.state} #{@home.zip}
 
-.container-fluid.
+.container-fluid.home-list
   .row
     .col-md-6.thumbnail.splash_show
       - if @home.image_url(:medium)
@@ -21,7 +21,8 @@
       h2.pull-right.price_border #{number_to_currency(@home.price, precision: 0)}
       h4 Bedrooms: #{@home.number_bedrooms}
       h4 Bathrooms: #{@home.number_bathrooms}
-      h4 Square Feet: #{@home.sq_ft}
+      h4.sq-feet data-sq_feet="#{@home.sq_ft}"
+        | Square Feet: #{@home.sq_ft}
       h4 Year Built: #{@home.year_built}
       h4 Lot Size: #{@home.lot_size}
       h4 Number of Floors: #{@home.number_of_floors}

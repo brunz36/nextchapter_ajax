@@ -5,7 +5,7 @@
       = form_tag(homes_path, :method => "get", id: "search-form") do
         = text_field_tag :query, params[:query], class: "col-xs-12 col-md-12", placeholder: "Search for your nextChapter"
 
-.row.index-homes
+.row.index-homes.home-list
   - if @homes.blank?
     = render 'empty_homes'
   - else

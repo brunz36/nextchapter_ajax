@@ -1,4 +1,4 @@
-.col-sm-6.index-listing
+.col-sm-6.index-listing.home-list
   .col-sm-6.thumbnail.index-img.listing
     - if home.image_url(:medium)
       = link_to image_tag(home.image_url(:medium), size: "300x197"), home
@@ -12,7 +12,9 @@
     p.h4 #{home.city}, #{home.state} #{home.zip}
     p Bedrooms: #{home.number_bedrooms}
     p Bathrooms: #{home.number_bathrooms}
-    p Square Feet: #{home.sq_ft}
     p Year Built: #{home.year_built}
+    .small-text
+      h4.sq-feet data-sq_feet="#{home.sq_ft}"
+        | Square Feet: #{home.sq_ft}
   .col-sm-12.listing.index_des
     p= home.description

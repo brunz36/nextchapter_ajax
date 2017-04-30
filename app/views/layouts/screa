@@ -1,9 +1,0 @@
-p.navbar-text[data-toggle="modal" data-target=".logout"]
-  | LOGOUT
-.modal.logout[tabindex="-1" role="dialog" aria-hidden="true"]
-.modal-dialog.modal-sm
-  .modal-content
-    h4.modal-header LOGOUT
-    .modal-body Are you sure you want to logoff?
-    .modal-footer
-      a.btn.btn.warning.btn-block[href='/logout'] LOGOUT

@@ -16,6 +16,22 @@ $(document).ready(function() {
     })
   })
 
+  // THERE REALLY SHOULD BE A BETTER WAY WITH TOGGLE!!!
+  $('.home-list').on('click', '.sq-feet', function(event){
+    let sqFeet = $(this).data("sq_feet")
+    let sqMeters = (sqFeet * 0.0929).toFixed(1)
+
+    $(this).replaceWith(`<h4 class="sq-meter" data-sq_meters="${sqMeters}">Square Meters: ${sqMeters}</h4>`)
+  })
+
+  $('.home-list').on('click', '.sq-meter', function(event){
+    let sqMeters = $(this).data("sq_meters")
+    let sqFeet = (sqMeters * 10.7639104167).toFixed()
+
+    $(this).replaceWith(`<h4 class="sq-feet" data-sq_feet="${sqFeet}">Square Feet: ${sqFeet}</h4>`)
+  })
+  // TOO MUCH CODE
+
   $('.page').on('click', function(event) {
     let queryValue = $('innerText').val()
 
