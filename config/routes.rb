@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :homes
+  resources :homes do
+    member do
+      post 'favorite'
+      post 'unfavorite'
+    end
+  end
 
   root 'pages#landing'
 

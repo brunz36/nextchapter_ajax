@@ -6,6 +6,24 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
+
+
+  $('body').on('click', '.home-favorite', function(event) {
+    let homeId = $(this).data('home-id')
+    let favorited = $(this).hasClass('favorited')
+
+    $(this).toggleClass('favorited')
+
+    console.log(`Handle click: ${homeId}`)
+
+    let url = favorited ? `/homes/${homeId}/unfavorite` : `/homes/${homeId}/favorite`
+    $.ajax({
+      method: 'POST',
+      url: url,
+      dataType: 'script'
+    })
+  })
+
   $('#query').on('input', _.debounce(function(event) {
     let queryValue = $(this).val()
 
@@ -17,19 +35,20 @@ $(document).ready(function() {
   }, 400))
 
   // THERE REALLY SHOULD BE A BETTER WAY WITH TOGGLE!!!
-  $('.home-list').on('click', '.sq-feet', function(event){
+  $('body').on('click', '.sq-feet', function(event){
     let sqFeet = $(this).data("sq_feet")
-    let sqMeters = (sqFeet * 0.0929).toFixed(1)
+    let sqMeters = $(this).data("sq-meters")
+    let showingMeters = $(this).data('showing-meters')
 
-    $(this).replaceWith(`<h4 class="sq-meter" data-sq_meters="${sqMeters}">Square Meters: ${sqMeters}</h4>`)
+    if (showingMeters === 'true') {
+      $(this).text(`${sqFeet} Square Feet`)
+      $(this).data('showing-meters', 'false')
+    } else {
+      $(this).text(`${sqMeters} Square Meters`)
+      $(this).data('showing-meters', 'true')
+    }
   })
 
-  $('.home-list').on('click', '.sq-meter', function(event){
-    let sqMeters = $(this).data("sq_meters")
-    let sqFeet = (sqMeters * 10.7639104167).toFixed()
-
-    $(this).replaceWith(`<h4 class="sq-feet" data-sq_feet="${sqFeet}">Square Feet: ${sqFeet}</h4>`)
-  })
   // TOO MUCH CODE
 
   $('.page a').on('click', function(event) {

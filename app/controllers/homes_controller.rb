@@ -73,6 +73,21 @@ class HomesController < ApplicationController
     end
   end
 
+  def favorite
+    home = Home.find(params[:id])
+
+    Favorite.create(home: home, user: current_user)
+    Rails.logger.debug "FAVORITING"
+  end
+
+  def unfavorite
+    home = Home.find(params[:id])
+    favorite = Favorite.find_by(home: home, user: current_user)
+    favorite.destroy
+
+    Rails.logger.debug "UNFAVORITING"
+  end
+
   private
 
   # Only allow a trusted parameter "white list" through.

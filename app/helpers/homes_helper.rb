@@ -8,4 +8,8 @@ module HomesHelper
       return "standard_home"
     end
   end
+
+  def favoriting_class(home, user)
+    Favorite.find_by(home: home, user: user) ? "favorited" : ""
+  end
 end

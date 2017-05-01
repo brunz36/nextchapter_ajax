@@ -14,7 +14,8 @@
     p Bathrooms: #{home.number_bathrooms}
     p Year Built: #{home.year_built}
     .small-text
-      h4.sq-feet data-sq_feet="#{home.sq_ft}"
+      h4.sq-feet data-sq_feet="#{home.sq_ft}" data-sq-meters=home.square_meters data-showing-meters='false'
         | Square Feet: #{home.sq_ft}
+    span.glyphicon.glyphicon-heart.home-favorite data-home-id=home.id class=favoriting_class(home, current_user)
   .col-sm-12.listing.index_des
     p= home.description
