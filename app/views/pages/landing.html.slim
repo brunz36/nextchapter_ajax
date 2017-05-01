@@ -37,8 +37,24 @@ html
       .row
         .col-lg-6
           = link_to "Start the nextChapter of your life", homes_path, class: "btn btn-warning btn-md"
-      / .row
-      /   .col-lg-8
-      /     = form_tag(homes_path, :method => "get", id: "search-form") do
-      /       = text_field_tag :search, params[:search], class: "col-md-6", placeholder: "Search for your nextChapter"
-      /       = submit_tag "Search", class: "btn btn-warning btn-sm black_text", :name => nil
+      .row
+        .col-lg-8
+          = form_tag(homes_path, :method => "get", id: "search-form") do
+            = text_field_tag :query, params[:query], class: "col-md-6", placeholder: "Search for your nextChapter"
+
+  .carousel.slide.col-md-4.col-md-offset-4 data-ride="carousel" id="carousel-generic"
+    .carousel-inner
+      - @homes.each_with_index do |home, index|
+        - if home.image_url(:large) != nil
+          - if index == 0
+            .item.active
+              = link_to image_tag(home.image_url(:large)), home
+          - else
+            .item
+              = link_to image_tag(home.image_url(:large)), home
+    
+    a.left.carousel-control data-slide="prev" href="#carousel-generic"
+      span.glyphicon.glyphicon-chevron-left
+    a.right.carousel-control data-slide="next" href="#carousel-generic"
+      span.glyphicon.glyphicon-chevron-right
+  

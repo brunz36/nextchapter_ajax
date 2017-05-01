@@ -160,6 +160,14 @@ body {
   padding: 1em;
 }
 
+.carousel {
+  margin-top: 3em; 
+}
+
+.carousel-inner .item img {
+    margin: 0 auto;
+}
+
 @media only screen and (max-width: 768px) {
   .form_box {
     height: auto;

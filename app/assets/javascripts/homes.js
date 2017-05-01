@@ -36,8 +36,6 @@ $(document).ready(function() {
     let pageNumber = $(this).text()
     event.preventDefault()
 
-    console.log(pageNumber)
-
     $.ajax({
       url: '/homes',
       data: { page: pageNumber },
